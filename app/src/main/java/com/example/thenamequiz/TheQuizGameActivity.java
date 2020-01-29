@@ -1,9 +1,11 @@
 package com.example.thenamequiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,10 +21,17 @@ public class TheQuizGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        ran = new Random();
         app = (minApplication) getApplication();
-        score = 0;
-        startNyRunde();
+        if(app.profiler.size() < 1){
+            Toast.makeText(this, getResources().getString(R.string.tooFewError), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            ran = new Random();
+            score = 0;
+            startNyRunde();
+        }
+
     }
 
     public void startNyRunde(){
@@ -44,7 +53,7 @@ public class TheQuizGameActivity extends AppCompatActivity {
             startNyRunde();
         } else {
             tilbakemelding = (TextView) findViewById(R.id.quizTilbakemelding);
-            tilbakemelding.setText("Feil navn.");
+            tilbakemelding.setText("Feil. Korrekt navn er: " + noverendeProfil.getNavn());
         }
     }
 }

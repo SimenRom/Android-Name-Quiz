@@ -11,13 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     //static public ArrayList<Profil> profiler = new ArrayList<>();
-
+    minApplication app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
         Bitmap.Config conf = Bitmap.Config.ARGB_8888;
         Bitmap defaultBilde = Bitmap.createBitmap(50, 50, conf);
-        minApplication app = (minApplication) getApplication();
+        app = (minApplication) getApplication();
+        app.populate();
         /*
         app.profiler.add(new Profil("Simen", defaultBilde));
         app.profiler.add(new Profil("Knut", defaultBilde));
@@ -50,8 +52,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start_quiz(View view){
-        Intent intent = new Intent(MainActivity.this, TheQuizGameActivity.class);
-        startActivity(intent);
+        if(app.profiler.size() < 1){
+            Toast.makeText(this, getResources().getString(R.string.tooFewError), Toast.LENGTH_SHORT).show();
+        }else {
+            Intent intent = new Intent(MainActivity.this, TheQuizGameActivity.class);
+            startActivity(intent);
+        }
+
     }
     public void open_list_all(View view){
         Intent intent = new Intent(this, ListAllActivity.class);

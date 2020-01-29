@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TheNameQuiz</string>
+    <string name="tooFewError">Legg til fleire først!</string>
 </resources>

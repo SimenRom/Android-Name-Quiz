@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,7 +32,9 @@ public class AddNewActivity extends AppCompatActivity {
         TextView navnInput = findViewById(R.id.navnInput);
         String navnString = navnInput.getText().toString();
         //dispatchTakePictureIntent(view);
-        if(imageBitmap != null){
+        if(imageBitmap != null && navnString.length() > 2){
+            Log.i("navn: ", "" + navnString);
+            Log.i("navnlengde: ", "" + navnString.length());
             Profil nyProfil = new Profil(navnString, imageBitmap);
             minApplication app = (minApplication) getApplication();
             app.profiler.add(nyProfil);
@@ -39,7 +42,7 @@ public class AddNewActivity extends AppCompatActivity {
             startActivity(intent);
         } else {
             TextView feilmelding = findViewById(R.id.feilMelding);
-            feilmelding.setText("Har du tatt bilde?");
+            feilmelding.setText("Har du tatt bilde og skrevet inn navn? Minst tre bokstaver.");
         }
         //velgBilde();
     }

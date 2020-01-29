@@ -51,9 +51,10 @@ public class MinAdapter extends BaseAdapter {
         TextView navnTekst = convertView.findViewById(R.id.navnEntity);
         ImageView profilBilde = convertView.findViewById(R.id.bildeEntity);
 
+
         navnTekst.setText(profil.getNavn());
         profilBilde.setImageBitmap(profil.getBilde());
-
+        navnTekst.setTag(R.id.tagHjelp, navnTekst);
         return convertView;
     }
 }
