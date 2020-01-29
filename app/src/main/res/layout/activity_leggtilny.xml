@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/navnInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Navn"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="dispatchTakePictureIntent"
+        android:text="Ta profilbilde" />
+
+    <ImageView
+        android:id="@+id/profilBildeRamme"
+        android:layout_width="match_parent"
+        android:layout_height="162dp"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <Button
+        android:id="@+id/buttonAddNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="leggTilProfil"
+        android:text="Legg til" />
+
+    <TextView
+        android:id="@+id/feilMelding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

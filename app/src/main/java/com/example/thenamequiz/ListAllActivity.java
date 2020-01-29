@@ -1,5 +1,6 @@
 package com.example.thenamequiz;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.ListView;
@@ -13,9 +14,15 @@ public class ListAllActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listall);
+        //Intent intent = getIntent();
+        //intent.getExtras("Profiler");
+
+
 
 
         ListView liste = (ListView) findViewById(R.id.minListe);
+
+        /*
         // Bitmap.createBitmap(R.mipmap.ic_launcher);
         Bitmap.Config conf = Bitmap.Config.ARGB_8888;
         Bitmap defaultBilde = Bitmap.createBitmap(50, 50, conf);
@@ -39,8 +46,9 @@ public class ListAllActivity extends AppCompatActivity {
         profiler.add(new Profil("J", defaultBilde));
         profiler.add(new Profil("K", defaultBilde));
         profiler.add(new Profil("L", defaultBilde));
-
-        MinAdapter minAdapter = new MinAdapter(this, R.layout.listeentity, profiler); //R.layout.listeEntity
+        */
+        minApplication app = (minApplication) getApplication();
+        MinAdapter minAdapter = new MinAdapter(this, R.layout.listeentity, app.profiler); //R.layout.listeEntity
         liste.setAdapter(minAdapter);
     }
 

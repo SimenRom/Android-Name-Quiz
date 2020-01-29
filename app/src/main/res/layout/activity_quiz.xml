@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,4 +9,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Her er quiz" />
+
+    <ImageView
+        android:id="@+id/quizBilde"
+        android:layout_width="match_parent"
+        android:layout_height="411dp"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <EditText
+        android:id="@+id/nameGuess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Gjett navn"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/nameGuessButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sjekkNavn"
+        android:text="Sjekk" />
+
+    <TextView
+        android:id="@+id/quizTilbakemelding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
