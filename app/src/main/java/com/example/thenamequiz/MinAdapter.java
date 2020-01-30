@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
@@ -40,7 +41,7 @@ public class MinAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         //view = LayoutInflater.from(context).inflate(R.layout.listeentity, null);
 
         //getItem(position).getNavn()...... //her er avslutta. Video under "se senere"
@@ -50,11 +51,17 @@ public class MinAdapter extends BaseAdapter {
         Profil profil = (Profil) getItem(position);
         TextView navnTekst = convertView.findViewById(R.id.navnEntity);
         ImageView profilBilde = convertView.findViewById(R.id.bildeEntity);
-
+        Button knapp = convertView.findViewById(R.id.knappFjern);
+        knapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                profiler.remove(position);
+                notifyDataSetChanged();
+            }
+        });
 
         navnTekst.setText(profil.getNavn());
         profilBilde.setImageBitmap(profil.getBilde());
-        navnTekst.setTag(R.id.tagHjelp, navnTekst);
         return convertView;
     }
 }

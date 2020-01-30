@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,37 +18,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    //static public ArrayList<Profil> profiler = new ArrayList<>();
     minApplication app;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Bitmap.Config conf = Bitmap.Config.ARGB_8888;
-        Bitmap defaultBilde = Bitmap.createBitmap(50, 50, conf);
+        //Bitmap.Config conf = Bitmap.Config.ARGB_8888;
+        //Bitmap defaultBilde = Bitmap.createBitmap(50, 50, conf);
         app = (minApplication) getApplication();
-        app.populate();
-        /*
-        app.profiler.add(new Profil("Simen", defaultBilde));
-        app.profiler.add(new Profil("Knut", defaultBilde));
-        app.profiler.add(new Profil("A", defaultBilde));
-        app.profiler.add(new Profil("B", defaultBilde));
-        app.profiler.add(new Profil("C", defaultBilde));
-        */
-      /*  TextView tekst1 = new TextView(this);
-        tekst1.setText("Hei ein");
-        tekst1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
-        TextView tekst2 = new TextView(this);
-        tekst2.setText("Hei to12345678909811341341341341347654321");
-        tekst2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
 
-        LinearLayout minLayout = new LinearLayout(this);
-        minLayout.setOrientation(LinearLayout.VERTICAL);
+        if(app.firstTime){
+            //Log.i("firstTime: ", "" + firstTime);
 
-        minLayout.addView(tekst1);
-        minLayout.addView(tekst2); */
-
+            app.populate();
+            app.firstTime = false;
+        }
 
     }
 

@@ -23,9 +23,8 @@ public class AddNewActivity extends AppCompatActivity {
 
     }
 
-
     /**
-     * Funksjon som køyres for å legge til ny profil.
+     * Funksjon som køyres ved "legg-til-knapp" for å legge til ny profil.
      * @param view
      */
     public void leggTilProfil(View view){
@@ -44,15 +43,11 @@ public class AddNewActivity extends AppCompatActivity {
             TextView feilmelding = findViewById(R.id.feilMelding);
             feilmelding.setText("Har du tatt bilde og skrevet inn navn? Minst tre bokstaver.");
         }
-        //velgBilde();
     }
- /*
-    public void velgBilde(View v){
-        Intent velgeBildeIntent = new Intent(Intent.ACTION_PICK);
 
-        Environment
-    } */
-
+    /**
+     * Funksjon som åpner kamera for å ta snapshot-bilde.
+     */
     static final int REQUEST_IMAGE_CAPTURE = 1;
     public void dispatchTakePictureIntent(View view) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -60,6 +55,13 @@ public class AddNewActivity extends AppCompatActivity {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
     }
+
+    /**
+     * Funksjon som henter bilde som blir sendt tilbake fra kamera.
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

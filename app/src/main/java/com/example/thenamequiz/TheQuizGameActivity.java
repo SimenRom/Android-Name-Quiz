@@ -47,7 +47,7 @@ public class TheQuizGameActivity extends AppCompatActivity {
     public void sjekkNavn(View v){
         TextView tilbakemelding = (TextView) findViewById(R.id.quizTilbakemelding);
         TextView guess = (TextView) findViewById(R.id.nameGuess);
-        if(guess.getText().toString().equals(noverendeProfil.getNavn())){
+        if(guess.getText().toString().toLowerCase().equals(noverendeProfil.getNavn().toLowerCase())){
             score++;
             tilbakemelding.setText("Korrekt, din score: " + score);
             startNyRunde();

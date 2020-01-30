@@ -9,29 +9,18 @@ import java.util.List;
 
 public class minApplication extends Application {
     public List<Profil> profiler = new ArrayList<>();
+    public boolean firstTime = true;
 
     public minApplication(){
         super();
 
     }
-
-    public void fjern(String navn){
-        for(Profil p : profiler){
-            if(p.getNavn().equals(navn)){
-                profiler.remove(p);
-                return;
-            }
-        }
-    }
-
     public void populate(){
         if (profiler.size() == 0){
             Bitmap defaultBilde = BitmapFactory.decodeResource(getResources(), R.drawable.mario);
-            profiler.add(new Profil("Simen", defaultBilde));
-            profiler.add(new Profil("Knut", defaultBilde));
-            profiler.add(new Profil("A", defaultBilde));
-            profiler.add(new Profil("B", defaultBilde));
-            profiler.add(new Profil("C", defaultBilde));
+            Bitmap defaultBilde2 = BitmapFactory.decodeResource(getResources(), R.drawable.luigi);
+            profiler.add(new Profil("Mario", defaultBilde));
+            profiler.add(new Profil("Luigi", defaultBilde2));
         }
     }
 }

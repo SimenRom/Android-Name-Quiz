@@ -23,6 +23,7 @@
     <Button
         android:layout_width="300px"
         android:layout_height="match_parent"
-        android:onClick="fjern"
-        android:text="Fjern" />
+        android:text="Fjern"
+        android:id="@+id/knappFjern"/>
+    <!-- android:onClick="fjern" -->
 </LinearLayout>
