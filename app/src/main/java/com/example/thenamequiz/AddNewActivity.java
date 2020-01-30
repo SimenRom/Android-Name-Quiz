@@ -31,7 +31,12 @@ public class AddNewActivity extends AppCompatActivity {
         TextView navnInput = findViewById(R.id.navnInput);
         String navnString = navnInput.getText().toString();
         //dispatchTakePictureIntent(view);
-        if(imageBitmap != null && navnString.length() > 2){
+        TextView feilmelding = findViewById(R.id.feilMelding);
+        if(imageBitmap == null){
+            feilmelding.setText("Har du tatt bilde?");
+        } else if (!(navnString.length() > 2)){
+            feilmelding.setText("Oppgi navn på minst 3 bokstaver.");
+        } else if(imageBitmap != null && navnString.length() > 2){
             Log.i("navn: ", "" + navnString);
             Log.i("navnlengde: ", "" + navnString.length());
             Profil nyProfil = new Profil(navnString, imageBitmap);
@@ -40,8 +45,7 @@ public class AddNewActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
-            TextView feilmelding = findViewById(R.id.feilMelding);
-            feilmelding.setText("Har du tatt bilde og skrevet inn navn? Minst tre bokstaver.");
+            feilmelding.setText("Ukjent feilmelding...");
         }
     }
 

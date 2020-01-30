@@ -34,6 +34,9 @@ public class TheQuizGameActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Funksjon som starter ny runde av quiz-spelet. Går til ny tilfeldig profil i databasen.
+     */
     public void startNyRunde(){
         int newnr;
         do{
@@ -44,6 +47,11 @@ public class TheQuizGameActivity extends AppCompatActivity {
         ImageView bilde = findViewById(R.id.quizBilde);
         bilde.setImageBitmap(noverendeProfil.getBilde());
     }
+
+    /**
+     * Funksjon som sjekker om gjettet navn i quiz er korrekt og gir tilbakemelding. 
+     * @param v
+     */
     public void sjekkNavn(View v){
         TextView tilbakemelding = (TextView) findViewById(R.id.quizTilbakemelding);
         TextView guess = (TextView) findViewById(R.id.nameGuess);
