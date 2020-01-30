@@ -49,7 +49,7 @@ public class TheQuizGameActivity extends AppCompatActivity {
     }
 
     /**
-     * Funksjon som sjekker om gjettet navn i quiz er korrekt og gir tilbakemelding. 
+     * Funksjon som sjekker om gjettet navn i quiz er korrekt og gir tilbakemelding.
      * @param v
      */
     public void sjekkNavn(View v){
@@ -57,6 +57,7 @@ public class TheQuizGameActivity extends AppCompatActivity {
         TextView guess = (TextView) findViewById(R.id.nameGuess);
         if(guess.getText().toString().toLowerCase().equals(noverendeProfil.getNavn().toLowerCase())){
             score++;
+            guess.setText("");
             tilbakemelding.setText("Korrekt, din score: " + score);
             startNyRunde();
         } else {
