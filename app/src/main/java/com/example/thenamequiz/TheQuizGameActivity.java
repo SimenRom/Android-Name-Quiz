@@ -1,7 +1,9 @@
 package com.example.thenamequiz;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
-public class TheQuizGameActivity extends AppCompatActivity {
-    private int score;
+public class TheQuizGameActivity extends Activity {
+    public int score;
     private Profil noverendeProfil;
     minApplication app;
     Random ran;
@@ -22,7 +24,7 @@ public class TheQuizGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         app = (minApplication) getApplication();
-        if(app.profiler.size() < 1){
+        if(app.profiler.size() < 2){
             Toast.makeText(this, getResources().getString(R.string.tooFewError), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -39,8 +41,10 @@ public class TheQuizGameActivity extends AppCompatActivity {
      */
     public void startNyRunde(){
         int newnr;
+        Log.i("tag", "starter ny runde. Antal profiler: " + app.profiler.size());
         do{
             newnr = ran.nextInt(app.profiler.size());
+            Log.i("tag", "nummer er: " + newnr);
         } while(newnr == nr);
         nr = newnr;
         noverendeProfil = app.profiler.get(nr);
@@ -55,7 +59,9 @@ public class TheQuizGameActivity extends AppCompatActivity {
     public void sjekkNavn(View v){
         TextView tilbakemelding = (TextView) findViewById(R.id.quizTilbakemelding);
         TextView guess = (TextView) findViewById(R.id.nameGuess);
-        if(guess.getText().toString().toLowerCase().equals(noverendeProfil.getNavn().toLowerCase())){
+        if(guess.getText().toString().length() < 1){
+            tilbakemelding.setText("Skriv inn eit navn.");
+        } else if (guess.getText().toString().toLowerCase().equals(noverendeProfil.getNavn().toLowerCase())){
             score++;
             guess.setText("");
             tilbakemelding.setText("Korrekt, din score: " + score);

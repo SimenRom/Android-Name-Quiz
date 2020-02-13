@@ -1,6 +1,7 @@
 package com.example.thenamequiz;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,14 @@ public class MinAdapter extends BaseAdapter {
     Context context;
     int resource;
     List<Profil> profiler;
+    minApplication app;
 
 
-    public MinAdapter(Context context, int resource, List<Profil> profiler){
+    public MinAdapter(Context context, int resource, List<Profil> profiler, minApplication app){
     this.context = context;
     this.profiler = profiler;
     this.resource = resource;
+    this.app = app;
     }
 
     @Override
@@ -55,7 +58,12 @@ public class MinAdapter extends BaseAdapter {
         knapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                profiler.remove(position);
+                //profiler.remove(position); //.getNavn();
+                //app.fjernFraBase(String );
+                if(!app.fjern((Profil) getItem(position))){
+                    //profiler.remove(position);
+                    Log.i("minTag", "Fant ingen profil i shared preferences å fjerne.");
+                }
                 notifyDataSetChanged();
             }
         });

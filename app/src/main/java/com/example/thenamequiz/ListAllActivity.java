@@ -22,7 +22,7 @@ public class ListAllActivity extends AppCompatActivity {
         ListView liste = (ListView) findViewById(R.id.minListe);
 
         minApplication app = (minApplication) getApplication();
-        MinAdapter minAdapter = new MinAdapter(this, R.layout.listeentity, app.profiler); //R.layout.listeEntity
+        MinAdapter minAdapter = new MinAdapter(this, R.layout.listeentity, app.profiler, app); //R.layout.listeEntity
         liste.setAdapter(minAdapter);
 
 

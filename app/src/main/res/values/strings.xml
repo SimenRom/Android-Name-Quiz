@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">TheNameQuiz</string>
     <string name="tooFewError">Legg til fleire først!</string>
+    <string name="tooFewLetters">Legg til fleire bokstaver!</string>
+    <string name="owner_name">Brukernavn</string>
+    <string name="welcome_msg">Velkommen tilbake</string>
+    <string name="typeOwnerName">Oppgi ditt navn</string>
+    <string name="btnConfirm">Bekreft</string>
+    <string name="btnChangeName">Bytt navn</string>
+    <string name="btnDropdown">Dropdown</string>
+
 </resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/dropDownBtn"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/btnDropdown"
+        app:showAsAction="ifRoom" >
+        <menu>
+            <item
+                android:id="@+id/settingsBtn"
+                android:title="@string/btnChangeName"
+                app:showAsAction="never" />
+
+        </menu>
+    </item>
+</menu>
