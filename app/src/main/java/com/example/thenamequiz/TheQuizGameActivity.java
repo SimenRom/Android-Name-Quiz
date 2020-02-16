@@ -62,8 +62,6 @@ public class TheQuizGameActivity extends Activity {
         String userAnswer = guess.getText().toString();
         String correctAnswer = noverendeProfil.getNavn();
 
-        checkAndModifyScore(userAnswer, correctAnswer);
-
         if(userAnswer.length() < 1){
             tilbakemelding.setText("Skriv inn eit navn.");
         } else if (checkAndModifyScore(userAnswer, correctAnswer)){
@@ -78,7 +76,7 @@ public class TheQuizGameActivity extends Activity {
 
     public boolean checkAndModifyScore(String userAnswer, String correctAnswer) {
         if (userAnswer.toLowerCase().equals(correctAnswer.toLowerCase())) {
-            score++;
+            score = score + 1;
             return true;
         } else {
             return false;
