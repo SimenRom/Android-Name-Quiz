@@ -51,23 +51,23 @@ public class AddNewActivity extends AppCompatActivity {
             Log.i("navnlengde: ", "" + navnString.length());
             Profil nyProfil = new Profil(navnString, imageBitmap);
             minApplication app = (minApplication) getApplication();
-            app.profiler.add(nyProfil);
-            Log.i("tag", "lagde ny profil. Legger den til...");
-            //legger til navnet i databasen som tar vare på alle navn og lagrer PB lokalt.
-            Set<String> set = new HashSet<>(minePrefs.getStringSet("navneBase", new HashSet<String>()));
-            int i = 0;
-            do {
-                i++;
-                Log.i("tag", "Forsøker å finne riktig nummer. i=" + i);
-                if(!set.contains(navnString + "_" + i)){
-                    set.add(navnString + "_" + i);
-                    app.saveToInternalStorage(imageBitmap, navnString, i);
-                    break;
-                }
-            } while (true);
-            minPrefsEditor.putStringSet("navneBase", set);
-            boolean saved = minPrefsEditor.commit();
-            Log.i("tag: ", minePrefs.getStringSet("navneBase", null).toString());
+            app.add(nyProfil);
+//            Log.i("tag", "lagde ny profil. Legger den til...");
+//            //legger til navnet i databasen som tar vare på alle navn og lagrer PB lokalt.
+//            Set<String> set = new HashSet<>(minePrefs.getStringSet("navneBase", new HashSet<String>()));
+//            int i = 0;
+//            do {
+//                i++;
+//                Log.i("tag", "Forsøker å finne riktig nummer. i=" + i);
+//                if(!set.contains(navnString + "_" + i)){
+//                    set.add(navnString + "_" + i);
+//                    app.saveToInternalStorage(imageBitmap, navnString, i);
+//                    break;
+//                }
+//            } while (true);
+//            minPrefsEditor.putStringSet("navneBase", set);
+//            boolean saved = minPrefsEditor.commit();
+//            Log.i("tag: ", minePrefs.getStringSet("navneBase", null).toString());
             //Log.i("tag: ", "AddNew: set-strls: " + set.size());
             //Log.i("tag", "set: " + set.toString());
 

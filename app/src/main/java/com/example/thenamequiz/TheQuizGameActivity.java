@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 public class TheQuizGameActivity extends Activity {
-    public int score;
+    public int score = 0;
     private Profil noverendeProfil;
     minApplication app;
     Random ran;
@@ -59,16 +59,30 @@ public class TheQuizGameActivity extends Activity {
     public void sjekkNavn(View v){
         TextView tilbakemelding = (TextView) findViewById(R.id.quizTilbakemelding);
         TextView guess = (TextView) findViewById(R.id.nameGuess);
-        if(guess.getText().toString().length() < 1){
+        String userAnswer = guess.getText().toString();
+        String correctAnswer = noverendeProfil.getNavn();
+
+        if(userAnswer.length() < 1){
             tilbakemelding.setText("Skriv inn eit navn.");
-        } else if (guess.getText().toString().toLowerCase().equals(noverendeProfil.getNavn().toLowerCase())){
-            score++;
+        } else if (checkAndModifyScore(userAnswer, correctAnswer)){
             guess.setText("");
             tilbakemelding.setText("Korrekt, din score: " + score);
             startNyRunde();
         } else {
             tilbakemelding = (TextView) findViewById(R.id.quizTilbakemelding);
-            tilbakemelding.setText("Feil. Korrekt navn er: " + noverendeProfil.getNavn());
+            tilbakemelding.setText("Feil. Korrekt navn er: " + correctAnswer);
         }
     }
+
+    public boolean checkAndModifyScore(String userAnswer, String correctAnswer) {
+        if (userAnswer.toLowerCase().equals(correctAnswer.toLowerCase())) {
+            score = score + 1;
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public int getScore() { return score; }
 }
